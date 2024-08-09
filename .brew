@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+# ==============================================================================
+# Brewfile - one file to install them all
+# ==============================================================================
+
+# Make sure we’re using the latest Homebrew
+brew update
+
+# ==============================================================================
+# Add additional taps
+#
+# This will throw error if already tapped.
+#
+# Alternative is to use `brew install user/tap/formula`
+# Ref. https://github.com/Homebrew/homebrew/pull/25203#issuecomment-30569290
+# ==============================================================================
+
+# brew leaves | xargs brew desc --eval-all
+
+# ==============================================================================
+# Install Cask apps/resources
+# ==============================================================================
+
+brew install --cask visual-studio-code
+brew install --cask google-chrome
+brew install --cask google-chrome@canary
+brew install --cask safari-technology-preview
+brew install --cask microsoft-edge
+brew install --cask firefox
+brew install --cask handbrake
+brew install --cask monitorcontrol
+brew install --cask the-unarchiver
+brew install --cask utm
+brew install --cask spotify
+brew install --cask discord
+brew install --cask open-in-code
+
+# ==============================================================================
+# Install standard packages
+# ==============================================================================
+
+brew install automake
+brew install coreutils
+brew install libksba
+brew install libyaml
+brew install nvm
+brew install php
+brew install pkg-config
+brew install zlib
+brew install openssl@3
+brew install jq
+
+# Remove outdated versions from the cellar
+brew cleanup

@@ -1,0 +1,96 @@
+# Aliases ==============================================================================
+
+# List all files colorized in long format
+alias l="ls -lF ${colorflag}"
+
+# List all files colorized in long format, excluding . and ..
+alias la="ls -lAF ${colorflag}"
+
+# List only directories
+alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
+
+# Always use color output for ls
+alias ls="command ls ${colorflag}"
+
+# Always enable colored `grep` output
+# Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# IP addresses
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en0"
+alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+
+# URL-encode strings
+alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
+
+# Merge PDF files, preserving hyperlinks
+# Usage: mergepdf input{1,2,3}.pdf
+alias mergepdf='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=_merged.pdf'
+
+# Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
+alias update='softwareupdate -i -a; brew update; brew upgrade; brew cleanup; update_npm; gem update --system; gem update; gem cleanup'
+alias minupdate='softwareupdate -i -a; brew update; brew upgrade; brew cleanup; gem update --system; gem update; gem cleanup'
+
+# Intuitive map function
+# For example, to list all directories that contain a certain file:
+# find . -name .gitattributes | map dirname
+alias map="xargs -n1"
+
+# Reload the shell (i.e. invoke as a login shell)
+alias reload="exec ${SHELL} -l"
+alias reseticons="sudo rm -rf /Library/Caches/com.apple.iconservices.store && killfinder"
+
+# Recursively delete `.DS_Store` files
+alias cleanup="find . -type f -name '*.DS_Store' -print0 | xargs -0 rm -v"
+
+# Empty the Trash on all mounted volumes and the main HDD.
+# Also, clear Apple’s System Logs to improve shell startup speed.
+# Finally, clear download history from quarantine. https://mths.be/bum
+alias emptytrash="rm -rfv '/Volumes/*/.Trashes'; find ~/.Trash -mindepth 1 -print0 | xargs -0 rm -rfv; find /private/var/log/asl/ -name '*.asl' -print0 | sudo xargs -0 rm -rfv; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
+
+# Show/hide hidden files in Finder
+alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+
+# Hide/show all desktop icons (useful when presenting)
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+
+# Reload native apps
+alias killfinder="killall Finder"
+alias killdock="killall Dock"
+alias killmenubar="killall SystemUIServer NotificationCenter"
+alias killos="killfinder && killdock && killmenubar"
+
+# Show system information
+alias system="system_profiler SPDisplaysDataType"
+alias cpu="sysctl -n machdep.cpu.brand_string"
+alias ram="top -l 1 -s 0 | grep PhysMem"
+alias envinfo="npx envinfo --system --npmPackages --binaries --browsers"
+
+
+alias hosts="code /etc/hosts"
+
+# Print each PATH entry on a separate line
+alias path='echo -e ${PATH//:/\\n}'
+
+alias npml='npm -g list --dept=0'
+alias npmo='npm outdated -g --depth=0'
+alias npmu='npm update -g'
+alias ni='npm install --prefer-offline --no-audit'
+alias nil='npm install --prefer-offline --no-audit --legacy-peer-deps'
+alias nl='npm install --legacy-peer-deps'
+alias npmcache='npm cache clear --force && npm install --no-shrinkwrap --update-binary'
+alias npxcache='rm -rf $(npm get cache)/_npx/*'
+alias wds="npx @web/dev-server --node-resolve --port 6174 --open"
+alias s='npm start'
+alias nvmp='cd ~/.nvm/versions/node/ && o'
+
+# https://github.com/rvm/rvm/issues/5380#issuecomment-2226992019
+alias rvmosxbrew='cd ~/.rvm/scripts/functions/requirements && code .'
+
+
+alias pro='cd ~/Projects'

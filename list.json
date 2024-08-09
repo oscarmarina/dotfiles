@@ -1,0 +1,18 @@
+{
+  "files": [
+    ".packages",
+    ".gitconfig-github",
+    "LICENSE",
+    "fresh-chrome.sh",
+    ".brew",
+    ".gitconfig-work",
+    ".zshrc",
+    "gnzhnode.zsh-theme",
+    "README.md",
+    ".gitignore",
+    "list.json",
+    ".gitconfig",
+    ".macos",
+    ".aliases"
+  ]
+}
