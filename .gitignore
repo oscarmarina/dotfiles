@@ -1,0 +1,45 @@
+# OS Specific
+**.DS_Store
+**.Spotlight-V100
+**.Trashes
+**Icon?
+**ehthumbs.db
+**Thumbs.db
+
+# IDE Specific
+**/.idea
+**/.vscode
+**/.code-workspace
+**nbproject
+**.buildpath
+**.project
+**.settings
+**.swp
+**.swo
+
+# Project Specific
+**/node_modules
+**/npm-debug.log
+**/*-debug.log
+**/yarn-*.log
+**/.npmrc
+**.log
+**/.tmp
+**tmp
+**.changelog
+**/coverage
+**coverage*
+**.nyc_output
+**bower_components*
+**bower-*.json
+
+# build
+**/_site
+**/dist
+**/dev
+**/build
+**/.tmp
+**/*.tgz
+**/*.tsbuildinfo
+**/out-tsc
+**/storybook-static
